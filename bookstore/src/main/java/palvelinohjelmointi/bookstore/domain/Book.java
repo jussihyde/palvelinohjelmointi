@@ -1,6 +1,5 @@
 package palvelinohjelmointi.bookstore.domain;
 
-import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,11 +21,13 @@ public class Book {
 	private String author;
 	private Integer publishing_year;
 	private String isbn;
-	private BigDecimal price;
+	private Double price;
 	
 	
 	//konstruktorit
-	public Book(String title, String author, Integer publishing_year, String isbn, BigDecimal price) {
+	public Book() {}
+	
+	public Book(String title, String author, Integer publishing_year, String isbn, Double price) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -37,12 +38,12 @@ public class Book {
 	
 	
 	//getterit setterit
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -87,12 +88,12 @@ public class Book {
 	}
 
 
-	public BigDecimal getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
