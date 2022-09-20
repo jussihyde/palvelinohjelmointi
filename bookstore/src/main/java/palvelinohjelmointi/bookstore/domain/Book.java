@@ -2,28 +2,51 @@ package palvelinohjelmointi.bookstore.domain;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+
 public class Book {
+	
+	//jpa 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
 	
 	//atribuutit
 	private String title;
 	private String author;
-	private Integer year;
+	private Integer publishing_year;
 	private String isbn;
 	private BigDecimal price;
 	
 	
 	//konstruktorit
-	public Book(String title, String author, Integer year, String isbn, BigDecimal price) {
+	public Book(String title, String author, Integer publishing_year, String isbn, BigDecimal price) {
 		super();
 		this.title = title;
 		this.author = author;
-		this.year = year;
+		this.publishing_year = publishing_year;
 		this.isbn = isbn;
 		this.price = price;
 	}
 	
 	
 	//getterit setterit
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	
 	public String getTitle() {
 		return title;
 	}
@@ -44,13 +67,13 @@ public class Book {
 	}
 
 
-	public Integer getYear() {
-		return year;
+	public Integer getpublishing_year() {
+		return publishing_year;
 	}
 
 
-	public void setYear(Integer year) {
-		this.year = year;
+	public void setpublishing_year(Integer publishing_year) {
+		this.publishing_year = publishing_year;
 	}
 
 
@@ -76,7 +99,7 @@ public class Book {
 	//toString
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
+		return "Book [title=" + title + ", author=" + author + ", publishing_year=" + publishing_year + ", isbn=" + isbn + ", price=" + price
 				+ "]";
 	}
 	
