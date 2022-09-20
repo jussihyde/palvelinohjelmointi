@@ -68,12 +68,12 @@ public class Book {
 	}
 
 
-	public Integer getpublishing_year() {
+	public Integer getPublishing_year() {
 		return publishing_year;
 	}
 
 
-	public void setpublishing_year(Integer publishing_year) {
+	public void setPublishing_year(Integer publishing_year) {
 		this.publishing_year = publishing_year;
 	}
 
