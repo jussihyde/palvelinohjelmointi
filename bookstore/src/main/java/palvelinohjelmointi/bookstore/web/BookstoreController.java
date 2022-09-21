@@ -13,13 +13,14 @@ import palvelinohjelmointi.bookstore.domain.BookRepository;
 @Controller
 public class BookstoreController {
 	
+	@Autowired
+	private BookRepository repository;
+	
 	@RequestMapping(value = "/index")
 	public String bookstore() {
 		
 		return "/index";
 	}
-	@Autowired
-	private BookRepository repository;
 	
 	@RequestMapping(value = "/booklist")
 	public String booklist(Model model) {
@@ -33,11 +34,24 @@ public class BookstoreController {
 		
 		return "redirect:../booklist";
 	}
+	@RequestMapping(value = "/editbook/{id}")
+	public String editBook(@PathVariable("id") Long bookId, Model model) {
+		
+		Book book = repository.findById(bookId).get();
+		model.addAttribute("book", book);
+		return "editbook";
+	}
+	@RequestMapping(value = "/editready", method = RequestMethod.POST)
+	public String editReadyBook(Book book) {
+		repository.save(book);
+		
+		return "redirect:booklist";
+	}
 	@RequestMapping(value = "/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		
-		return "addstudent";
+		return "addbook";
 	}
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBook(Book book) {
