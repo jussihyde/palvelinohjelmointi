@@ -97,11 +97,10 @@ public class Book {
 		this.price = price;
 	}
 
-	//toString
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", publishing_year=" + publishing_year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", publishing_year=" + publishing_year
+				+ ", isbn=" + isbn + ", price=" + price + "]";
 	}
 	
 	
