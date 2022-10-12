@@ -11,6 +11,8 @@ import palvelinohjelmointi.bookstore.domain.Book;
 import palvelinohjelmointi.bookstore.domain.BookRepository;
 import palvelinohjelmointi.bookstore.domain.Category;
 import palvelinohjelmointi.bookstore.domain.CategoryRepository;
+import palvelinohjelmointi.bookstore.domain.Useer;
+import palvelinohjelmointi.bookstore.domain.UserRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -20,7 +22,7 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository)
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository crepository, UserRepository urepository)
 	
 		
 		{return (args) -> {
@@ -50,6 +52,16 @@ public class BookstoreApplication {
 			repository.findAll().forEach((book) -> {
 	            logger.info("{}", book);
 	        });
+			
+			Useer user1 = new Useer("user", "$2a$10$CvPzuhUj1PUeuu7NcI39vuzrpmA.kVGbI25fL6H/rjVWiExVdh0w.", "USER");
+			Useer user2 = new Useer("admin", "$2a$10$HmtSaFkom..jGjQ2B8ak8Ou.jqY7Y1zOmwGwpV.ZvLYBPXsVlRKJa", "ADMIN");
+			
+			urepository.save(user1);
+			urepository.save(user2);
+			
+			urepository.findAll().forEach((user) -> {
+				logger.info("{}", user);
+			});
 			
 		};
 	}
