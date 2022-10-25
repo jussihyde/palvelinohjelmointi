@@ -29,7 +29,7 @@ public class BookstoreController {
 	@RequestMapping(value = "/index")
 	public String bookstore() {
 		
-		return "/index";
+		return "index";
 	}
 	
 	@RequestMapping(value="/login")
@@ -41,7 +41,7 @@ public class BookstoreController {
 	public String booklist(Model model) {
 		model.addAttribute("books", repository.findAll());
 		
-		return "/booklist";
+		return "booklist";
 	}
 	@RequestMapping(value = "/delete/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
